@@ -1,0 +1,333 @@
+/* Reset y Estilos Globales */
+:root {
+  --primary-color: #2c3e50; /* Azul oscuro/medianoche */
+  --secondary-color: #3498db; /* Azul brillante */
+  --text-color: #333;
+  --light-gray: #f4f7f6;
+  --white-color: #ffffff;
+  --spacing-unit: 1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-gray);
+  padding-top: 70px; /* Espacio para la barra de navegación fija */
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 calc(var(--spacing-unit) * 2);
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary-color);
+  margin-bottom: calc(var(--spacing-unit) * 0.75);
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+  padding-bottom: calc(var(--spacing-unit) * 0.5);
+  border-bottom: 3px solid var(--secondary-color);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+p {
+  margin-bottom: var(--spacing-unit);
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navegación */
+#main-nav {
+  background: var(--primary-color);
+  color: var(--white-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#main-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: calc(var(--spacing-unit) * 0.5);
+  padding-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+#main-nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white-color);
+}
+
+#main-nav ul {
+  display: flex;
+}
+
+#main-nav ul li a {
+  color: var(--white-color);
+  padding: calc(var(--spacing-unit) * 0.75) var(--spacing-unit);
+  display: block;
+  font-weight: 500;
+}
+
+#main-nav ul li a:hover {
+  background: var(--secondary-color);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* Encabezado Principal (Hero) */
+.hero {
+  background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.85)),
+    url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+      center center/cover no-repeat; /* Imagen de fondo genérica sobre tecnología */
+  color: var(--white-color);
+  padding: calc(var(--spacing-unit) * 4) 0;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  color: var(--white-color);
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+}
+
+.hero .subtitle {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  min-height: 2.2rem; /* Para evitar saltos de layout durante el efecto de escritura */
+}
+
+.hero .subtitle .cursor {
+  display: inline-block;
+  background-color: var(--white-color);
+  margin-left: 0.1rem;
+  width: 3px;
+  animation: blink 1s infinite;
+}
+
+.hero .btn {
+  display: inline-block;
+  background: var(--secondary-color);
+  color: var(--white-color);
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+  background: #2980b9; /* Un azul un poco más oscuro */
+  text-decoration: none;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Secciones */
+section {
+  padding: calc(var(--spacing-unit) * 3) 0;
+  background-color: var(--white-color);
+  margin-bottom: var(--spacing-unit);
+}
+section:nth-child(even) {
+  /* Alternar color de fondo para las secciones */
+  background-color: var(--light-gray);
+}
+section#hero-section {
+  /* Para que el hero no tenga margen inferior */
+  margin-bottom: 0;
+  padding: 0; /* Reset padding as hero class handles it */
+}
+
+/* Sección de Habilidades */
+#habilidades .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--spacing-unit) * 2);
+}
+
+.skill-category {
+  background: var(--white-color);
+  padding: calc(var(--spacing-unit) * 1.5);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Si la sección de habilidades está en un fondo claro, mantenemos las cards blancas.
+           Si la sección de habilidades cae en un fondo gris (nth-child(even)), entonces: */
+section:nth-child(even) .skill-category {
+  background: var(
+    --white-color
+  ); /* Asegurar que las cards sean blancas incluso en secciones grises */
+}
+section:nth-child(odd) .skill-category {
+  /* Si la sección de habilidades cae en un fondo blanco, podemos hacer las cards ligeramente grises o mantenerlas blancas. Las mantendremos blancas para consistencia */
+  background: var(--white-color);
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.skill-category h3 {
+  margin-bottom: var(--spacing-unit);
+  display: flex;
+  align-items: center;
+}
+
+.skill-category h3::before {
+  /* Icono placeholder */
+  content: "🛠️"; /* Puedes cambiar esto por SVGs o una fuente de iconos */
+  margin-right: calc(var(--spacing-unit) * 0.5);
+  font-size: 1.5rem;
+}
+.skill-category.frontend h3::before {
+  content: "💻";
+}
+.skill-category.redes h3::before {
+  content: "🌐";
+}
+.skill-category.basedatos h3::before {
+  content: "🗃️";
+}
+
+.skill-category ul li {
+  margin-bottom: calc(var(--spacing-unit) * 0.5);
+  padding-left: calc(var(--spacing-unit) * 1.5);
+  position: relative;
+}
+
+.skill-category ul li::before {
+  content: "✓";
+  color: var(--secondary-color);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Sección de Contacto */
+#contacto p {
+  font-size: 1.1rem;
+}
+#contacto .contact-item {
+  margin-bottom: var(--spacing-unit);
+}
+#contacto .contact-item strong {
+  color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+  background: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 2) 0;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero .subtitle {
+    font-size: 1.2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  #main-nav .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #main-nav .logo {
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+  }
+
+  #main-nav ul {
+    justify-content: center;
+    width: 100%;
+  }
+  #main-nav ul li a {
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 0.75);
+    font-size: 0.9rem;
+  }
+  body {
+    padding-top: 110px; /* Ajustar para la nav más alta en móvil */
+  }
+}
+
+@media (max-width: 480px) {
+  #main-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  #main-nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+  #main-nav ul li a {
+    border-bottom: 1px solid #4a6a8a;
+  }
+  body {
+    padding-top: 200px; /* Ajustar para la nav más alta en móvil */
+  }
+}
